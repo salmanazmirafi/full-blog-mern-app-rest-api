@@ -8,7 +8,7 @@ exports.signup = async (req, res, next) => {
     const { username, email, password, profile, coverpicture } = req.body;
     const user = await User.create({
       username,
-      email,
+      email: email.toLowerCase(),
       password,
       profile,
       coverpicture,
@@ -44,8 +44,10 @@ exports.login = async (req, res) => {
       process.env.PRIVET_KEY,
       { expiresIn: "2h" }
     );
+
     res.status(200).json({
       message: "Login Successful",
+      user,
       token,
     });
   } catch (error) {
