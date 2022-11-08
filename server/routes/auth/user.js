@@ -1,11 +1,12 @@
 const { userUpdate, deleteUser, getAllUser } = require("../../controlar/user");
+const { userMiddliewars } = require("../../middlewares/userMiddliewars");
 const userRouter = require("express").Router();
 
 // user Update
-userRouter.put("/:id", userUpdate);
+userRouter.put("/:id", userMiddliewars, userUpdate);
 // user Delete
-userRouter.delete("/:id", deleteUser);
+userRouter.delete("/:id", userMiddliewars, deleteUser);
 // get all user
-userRouter.get("/all", getAllUser);
+userRouter.get("/", userMiddliewars, getAllUser);
 
 module.exports = userRouter;

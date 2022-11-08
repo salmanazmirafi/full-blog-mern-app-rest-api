@@ -36,6 +36,7 @@ exports.deleteUser = async (req, res, next) => {
     const userDelet = await User.findByIdAndDelete(userId);
     res.status(200).json({
       message: "User Delete Success",
+      userDelet,
     });
   } catch (error) {
     res.status(400).json({
@@ -45,12 +46,16 @@ exports.deleteUser = async (req, res, next) => {
 };
 // get all user
 exports.getAllUser = async (req, res, next) => {
+  const { username } = req.query;
   try {
-    const find = await User.find();
-    res.status(200).json({
-      message: "get all user",
-      find,
-    });
+    let posts;
+    if (username) {
+      posts = await User.find({ username });
+    } else {
+      posts = await User.find();
+    }
+
+    res.status(200).json(posts);
   } catch (error) {
     error;
   }

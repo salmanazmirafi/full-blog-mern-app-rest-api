@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const signup = require("./routes/registration/signup");
 const login = require("./routes/registration/login");
 const userRouter = require("./routes/auth/user");
+const postRouter = require("./routes/post/posts");
 
 // env config
 dotenv.config();
@@ -30,6 +31,8 @@ app.use("/signup", signup);
 app.use("/login", login);
 // user update delete
 app.use("/user", userRouter);
+// post
+app.use("/post", postRouter);
 
 app.listen(process.env.PROT);
 console.log("Server is run");
