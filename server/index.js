@@ -41,7 +41,6 @@ const upload = multer({ storage: uploadStoreg });
 
 // Uploads file
 app.post("/upload", upload.single("file"), (req, res) => {
-  console.log(req.file);
   const fileInfo = req.file;
   res.status(200).json({
     message: "File Uploads Successful",
