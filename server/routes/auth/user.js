@@ -7,6 +7,6 @@ userRouter.put("/:id", userMiddliewars, userUpdate);
 // user Delete
 userRouter.delete("/:id", userMiddliewars, deleteUser);
 // get all user
-userRouter.get("/", userMiddliewars, getAllUser);
+userRouter.get("/", getAllUser);
 
 module.exports = userRouter;
